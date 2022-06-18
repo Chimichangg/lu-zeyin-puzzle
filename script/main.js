@@ -7,7 +7,8 @@
 	let theThumbnails = document.querySelectorAll('#buttonHolder img'),
 		gameBoard = document.querySelector('.puzzle-board'),
 		pzlPieces = document.querySelectorAll('.puzzle-pieces img'),
-		dropZones = document.querySelectorAll('.drop-zone');
+		dropZones = document.querySelectorAll('.drop-zone'),
+		board = document.querySelector('.puzzle-pieces');
 
 	/*
 	theThumbnails = [
@@ -29,6 +30,27 @@
 		
 		pzlPieces.forEach((piece,index) => {
 			piece.src = `images/${imagesNames[index] + currentSet.dataset.bgref + '.jpg'}`
+		});
+		
+	}
+
+	/*function reset() {
+		pzlPieces.forEach(piece => piece.appendTo(document.getElementById('#board')));
+	}*/
+
+	/*function reset() {
+		pzlPieces.appendTo(document.getElementById('#board'));
+	}*/
+
+	/*function reset() {
+		board.appendChild(pzlPieces);
+	}*/
+
+	function reset() {
+		dropZones.forEach(zone => {
+			board.appendChild(zone.firstChild)
+
+			/*zone.removeChild (zone.firstChild)*/
 		});
 	}
 
@@ -65,6 +87,10 @@
 	// events are things like clikcs, drags, double-clicks, keypresses... all the ways that a user can interact with a mouse, a keyboard etc
  
 	theThumbnails.forEach(image => image.addEventListener('click', changeImagesSet));
+
+	theThumbnails.forEach(image => image.addEventListener('click', reset));
+
+
 	pzlPieces.forEach(piece => piece.addEventListener('dragstart', allowDrag));
 
 	// set up the drop zone event handling
