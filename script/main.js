@@ -50,7 +50,13 @@
 		let droppedElId = event.dataTransfer.getData('draggedEl');
 
 		// retrieve the dragged el by its ID, and then put it inside the current drop zone
-		this.appendChild(document.querySelector(`#${droppedElId}`));
+
+		// only move the image if the drop zone doesn't have any image in, do nothing if the drop zone already has image dropped
+		if (this.childNodes.length < 1) {
+			this.appendChild(document.querySelector(`#${droppedElId}`));
+		} else {
+			return;
+		}
 
 		// MDN JavaScript template string
 	}
