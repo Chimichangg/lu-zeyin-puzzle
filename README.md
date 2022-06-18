@@ -7,3 +7,6 @@ This is a four-piece puzzle game with four different images to be selected. The 
 
 ### Only allowing one image drop in per zone
 Command: if the drop zone have less than 1 child node (for some reason "= 0" doesn't work), then do the dropping, otherwise do nothing when drag and drop.
+
+### Reset Playboard
+Create a reset function which sends the child element in all drop zones back to the pieces board. 
